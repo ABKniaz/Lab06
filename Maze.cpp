@@ -42,7 +42,7 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
    //DO THIS
    //you may need to back through several cells
 
-   Cell* top_cell = stack->peek();  
+   Cell* top_cell = stack->peek();
    //top_cell is NULL if the stack is empty
    //top_cell's direction is DEAD_END if you need to keep backtracking
 
@@ -66,7 +66,7 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
    int col = curr_cell->getCol();
 
    //have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
-   if (row == maze->getNumRows() && col == maze->getNumCols())  
+   if (row == maze->getNumRows() && col == maze->getNumCols() && maze->getElement(row, col) == SPACE)
    {
       //set the maze location to TRIED
 	  maze->setElement(row, col, TRIED);
@@ -136,7 +136,7 @@ bool Maze::traverse()
          Sleep(75);  //slow down the maze traversal
          gui->update();
       }
-      else //look for a different route 
+      else //look for a different route
       {
          //DO THIS
          //delete the cell
@@ -181,7 +181,7 @@ void Maze::draw(Cairo::RefPtr<Cairo::Context> cr, int width, int height)
 
    Color black(0.0, 0.0, 0.0);
    Rect blackRect(&black, cell_width, cell_height);
- 
+
    for (int i = 1; i <= rows; i++)
    {
       for (int j = 1; j <= cols; j++)

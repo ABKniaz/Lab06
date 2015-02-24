@@ -46,7 +46,8 @@ Cell* Maze::processBackTrack(StackLinked<Cell>* stack)
    //top_cell is NULL if the stack is empty
    //top_cell's direction is DEAD_END if you need to keep backtracking
 
-   while (top_cell->getDir() == DEAD_END)  //need to back track
+
+   while (top_cell != NULL && top_cell->getDir() == DEAD_END)  //need to back track
    {
 	  Cell* popped_cell = stack->pop();
 	  maze->setElement(popped_cell->getRow(), popped_cell->getCol(), BACKTRACK);

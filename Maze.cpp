@@ -85,7 +85,7 @@ void Maze::processSolution(StackLinked<Cell>* stack)
 {
    //DO THIS
    //the stack has the solution path stored
-   while(while stack->peek != NULL)
+   while(stack->peek() != NULL)
    {
       //get the next cell from the stack
 	  Cell* popped_cell = stack->pop();
@@ -132,7 +132,7 @@ bool Maze::traverse()
          //update the maze location to TRIED
 		 maze->setElement(row, col, TRIED);
          //put the cell on the stack (move forward through the maze)
-		 stack->push(curr_cell);
+		 stack.push(curr_cell);
          Sleep(75);  //slow down the maze traversal
          gui->update();
       }
